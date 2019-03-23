@@ -64,9 +64,9 @@ if __name__ == '__main__':
     stringValidation(out1)
     ########################################################
     string = input("please enter your string ... ")
-    # .strip()
+    # .strip()        # if you want to remove the white spaces from the line 
     sub_string = input("you wanna search for ... ")
-    # .strip()
+    # .strip()       # # if you want to remove the white spaces from the line 
 
     counter = countSubstring(string, sub_string)
     print("that sub string occur ", counter, " times")
