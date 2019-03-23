@@ -46,6 +46,12 @@ def countSubstring(inputString, substring):
 
     return counter
 
+import textwrap
+def myWrap(line, width):
+    paragraph = textwrap.fill(line, width)
+
+    return paragraph
+
 
 if __name__ == '__main__':
 
@@ -70,3 +76,5 @@ if __name__ == '__main__':
 
     counter = countSubstring(string, sub_string)
     print("that sub string occur ", counter, " times")
+
+    
