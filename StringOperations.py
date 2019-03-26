@@ -1,5 +1,7 @@
 # samiro0on         # mahmoudsamir109@gmail.com             # 23/03/2019
 
+import re
+
 def reverseChars(inputStr):
     inputList = inputStr.split(" ")
     # print(inputStr)
@@ -43,14 +45,57 @@ def countSubstring(inputString, substring):
         # step = index + len(substring)
         if substring == inputString[index:index + len(substring)]:
             counter += 1
-
+    # or you can use another method
+    # counter = inputString.count(substring)
     return counter
 
-import textwrap
-def myWrap(line, width):
-    paragraph = textwrap.fill(line, width)
+def mutateString(inputString, index, char):
+    # inputString = inputString[:index] + char + inputString[index+1:]
 
-    return paragraph
+    stringList = list(inputString)
+    stringList[index] = char
+    newInputString = ''.join(stringList)
+
+    return newInputString
+
+def changeLetters(inputStr, subString,newSubString):
+    newStr = inputStr.replace(subString, newSubString)
+    return newStr
+
+def changeLettersUsingRE(inputStr, subString, newSubString):
+    newStr = re.sub(subString, newSubString,inputStr)
+    return newStr
+
+def removeLetters(inputStr, subString):
+    newStr = ''.join([char for char in inputStr if char not in subString])
+    return newStr
+
+def reverseString(inputStr):
+    newStr = inputStr[::-1]
+    return newStr
+
+def firstOccuranceOfSubString(inputStr, subString):
+    counter = inputStr.find(subString)
+    # if you want the last occarance of the object
+    # counter = inputStr.rfind(subString)
+    return counter
+
+def formatString():
+    string = "Hello, Mr:{} your balance is{:07.3f}$".format("Samir",23.782924)
+    # https://www.programiz.com/python-programming/methods/string/format
+    return string
+
+def capitaliseFirstLetterInStr(inputStr):
+    inputStr = inputStr.split(" ")
+    newStr = []
+    for word in inputStr:
+        newStr.append(word.capitalize())
+
+    # or you can use builtin function title()
+    # newStr = inputStr.title()
+
+    return " ".join(newStr)
+
 
 
 if __name__ == '__main__':
@@ -70,11 +115,21 @@ if __name__ == '__main__':
     stringValidation(out1)
     ########################################################
     string = input("please enter your string ... ")
-    # .strip()        # if you want to remove the white spaces from the line 
+    # .strip()
     sub_string = input("you wanna search for ... ")
-    # .strip()       # # if you want to remove the white spaces from the line 
+    # .strip()
+########################################################################################
+    # counter = countSubstring(string, sub_string)
+    # print("that sub string occur ", counter, " times")
 
-    counter = countSubstring(string, sub_string)
-    print("that sub string occur ", counter, " times")
+    # out4 = mutateString(out1, 8, 'k')
+    # print(out4)
 
-    
+    print(changeLettersUsingRE("myssnamessis mkamoudsssashtsalismilassan", "ss", " "))
+    print(changeLetters("myssnamessis mkamoudsssashtsalismilassan", "ss", " "))
+    print(removeLetters("myssnamessis mkamoudsssashtsalismilassan", "ss"))
+    print(reverseString("batman eats apple !"))
+    print(firstOccuranceOfSubString("ncdkc mah saashdmahah msdmhmash mah", "mah"))
+    print(formatString())
+
+    print(capitaliseFirstLetterInStr("my name is ay klam !"))
